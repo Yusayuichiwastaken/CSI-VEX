@@ -1,6 +1,6 @@
 {
     "mode": "Text",
-    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Drivetrain.setDriveVelocity(20.0, percent);\n  \n  //Motor Speed\n  Arm.setVelocity(1.0, percent);\n  Elbow.setVelocity(30.0, percent);\n  Hand.setVelocity(15.0, percent);\n  \n  //Motor Torque\n  Arm.setMaxTorque(70.0, percent);\n  Elbow.setMaxTorque(100.0, percent);\n  Hand.setMaxTorque(90.0, percent);\n  \n  //Motor Stop Type\n  Arm.setStopping(hold);\n  Hand.setStopping(hold);\n  Elbow.setStopping(hold);\n  \n  return 0;\n}\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n\n \n\n  while(true){\n      Arm.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct);\n\n          \n  }\n}",
+    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Drivetrain.setDriveVelocity(20.0, percent);\n  \n  //Motor Speed\n  Arm.setVelocity(15.0, percent);\n  Elbow.setVelocity(1.0, percent);\n  Hand.setVelocity(8.0, percent);\n  \n  //Motor Torque\n  Arm.setMaxTorque(100.0, percent);\n  Elbow.setMaxTorque(100.0, percent);\n  Hand.setMaxTorque(100.0, percent);\n  \n  //Motor Stop Type\n  Arm.setStopping(hold);\n  Hand.setStopping(hold);\n  Elbow.setStopping(hold);\n  \n  return 0;\n}\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n\n \n\n  while(true){\n      Elbow.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct);\n\n          \n  }\n}",
     "textLanguage": "cpp",
     "rconfig": [
         {
@@ -9,13 +9,13 @@
             "customName": false,
             "deviceType": "Controller",
             "setting": {
-                "left": "Elbow",
+                "left": "",
                 "leftDir": "false",
-                "right": "Hand",
+                "right": "Arm",
                 "rightDir": "false",
                 "upDown": "",
                 "upDownDir": "false",
-                "xB": "",
+                "xB": "Hand",
                 "xBDir": "false",
                 "drive": "arcadel",
                 "id": "primary"
@@ -35,7 +35,7 @@
                 "type": "2-motor",
                 "wheelSize": "wheel4in",
                 "gear": "ratio18_1",
-                "gearRatio": "12:18",
+                "gearRatio": "1:1",
                 "direction": "fwd",
                 "gyroType": "none",
                 "width": "13.25",
