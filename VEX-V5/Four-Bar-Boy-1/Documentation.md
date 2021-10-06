@@ -3,7 +3,7 @@
 Moderator: Carlos J. Cobian
 
 Mechanical Team:
-* Mario Sanchez
+* Gustavo Pérez
 
 Programming Team:
 * Luis Umpierre
