@@ -79,8 +79,8 @@
                 "fwd": "up",
                 "rev": "down",
                 "gear": "ratio18_1",
-                "motor_a_reversed": "true",
-                "motor_b_reversed": "false"
+                "motor_a_reversed": "false",
+                "motor_b_reversed": "true"
             },
             "triportSourcePort": 22
         }
