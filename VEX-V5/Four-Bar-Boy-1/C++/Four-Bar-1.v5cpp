@@ -1,6 +1,6 @@
 {
     "mode": "Text",
-    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Arm.setMaxTorque(80.0, percent);\n  Arm.setVelocity(45.0, percent);\n  Front_Lift.setVelocity(45.0, percent);\n  Arm.setStopping(hold);\n  Front_Lift.setStopping(hold);\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  // post event registration\n\n  // set default print color to black\n  printf(\"\\033[30m\");\n\n  // wait for rotation sensor to fully initialize\n  wait(30, msec);\n\n  whenStarted1();\n}",
+    "textContent": "#include \"vex.h\"\n\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Arm.setMaxTorque(80.0, percent);\n  Arm.setVelocity(45.0, percent);\n  Front_Lift.setVelocity(45.0, percent);\n  Arm.setStopping(hold);\n  Front_Lift.setStopping(hold);\n  Rear_Lift.setStopping(hold);\n  Rear_Mid_Arm.setStopping(hold);\n  Rear_Claw.setStopping(hold);\n  return 0;\n}\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n\n \n\n  while(true){\n      Rear_Claw.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct);\n\n          \n  }\n}\n",
     "textLanguage": "cpp",
     "rconfig": [
         {
@@ -83,7 +83,8 @@
                 "fwd": "forward",
                 "rev": "reverse",
                 "gear": "ratio18_1"
-            }
+            },
+            "triportSourcePort": 22
         },
         {
             "port": [
@@ -99,7 +100,8 @@
                 "rev": "reverse",
                 "gear": "ratio18_1",
                 "id": "partner"
-            }
+            },
+            "triportSourcePort": 22
         },
         {
             "port": [
@@ -114,7 +116,8 @@
                 "fwd": "forward",
                 "rev": "reverse",
                 "gear": "ratio18_1"
-            }
+            },
+            "triportSourcePort": 22
         },
         {
             "port": [
@@ -130,7 +133,8 @@
                 "rev": "reverse",
                 "gear": "ratio18_1",
                 "id": "partner"
-            }
+            },
+            "triportSourcePort": 22
         }
     ],
     "slot": 0,
