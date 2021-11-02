@@ -1,6 +1,6 @@
 {
     "mode": "Text",
-    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Arm.setMaxTorque(80.0, percent);\n  Arm.setVelocity(45.0, percent);\n  Front_Lift.setVelocity(45.0, percent);\n  Arm.setStopping(hold);\n  Front_Lift.setStopping(hold);\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  // post event registration\n\n  // set default print color to black\n  printf(\"\\033[30m\");\n\n  // wait for rotation sensor to fully initialize\n  wait(30, msec);\n\n  whenStarted1();\n}",
+    "textContent": "#include \"vex.h\"\n\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Arm.setMaxTorque(80.0, percent);\n  Arm.setVelocity(45.0, percent);\n  Front_Lift.setVelocity(45.0, percent);\n  Arm.setStopping(hold);\n  Front_Lift.setStopping(hold);\n  Rear_Lift.setStopping(hold);\n  Rear_Mid_Arm.setStopping(hold);\n  Rear_Claw.setStopping(hold);\n  return 0;\n}\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n\n \n\n  while(true){\n      Rear_Claw.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct);\n\n          \n  }\n}\n",
     "textLanguage": "cpp",
     "rconfig": [
         {
@@ -8,14 +8,15 @@
             "name": "Controller1",
             "customName": false,
             "deviceType": "Controller",
+            "deviceClass": "controller",
             "setting": {
                 "left": "Arm",
                 "leftDir": "false",
-                "right": "Front_Lift",
+                "right": "Rear_Mid_Arm",
                 "rightDir": "false",
-                "upDown": "",
+                "upDown": "Front_Lift",
                 "upDownDir": "false",
-                "xB": "",
+                "xB": "Rear_Lift",
                 "xBDir": "false",
                 "drive": "arcadel",
                 "id": "primary"
@@ -31,6 +32,7 @@
             "name": "Drivetrain",
             "customName": false,
             "deviceType": "Drivetrain",
+            "deviceClass": "smartdrive",
             "setting": {
                 "type": "2-motor",
                 "wheelSize": "wheel4in",
@@ -58,6 +60,7 @@
             "name": "Arm",
             "customName": true,
             "deviceType": "MotorGroup",
+            "deviceClass": "motor_group",
             "setting": {
                 "fwd": "up",
                 "rev": "down",
@@ -69,18 +72,67 @@
         },
         {
             "port": [
-                5,
-                6
+                5
             ],
             "name": "Front_Lift",
             "customName": true,
-            "deviceType": "MotorGroup",
+            "deviceType": "Motor",
+            "deviceClass": "motor",
             "setting": {
-                "fwd": "up",
-                "rev": "down",
+                "reversed": "false",
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1"
+            },
+            "triportSourcePort": 22
+        },
+        {
+            "port": [
+                6
+            ],
+            "name": "Rear_Lift",
+            "customName": true,
+            "deviceType": "Motor",
+            "deviceClass": "motor",
+            "setting": {
+                "reversed": "false",
+                "fwd": "forward",
+                "rev": "reverse",
                 "gear": "ratio18_1",
-                "motor_a_reversed": "false",
-                "motor_b_reversed": "true"
+                "id": "partner"
+            },
+            "triportSourcePort": 22
+        },
+        {
+            "port": [
+                7
+            ],
+            "name": "Rear_Mid_Arm",
+            "customName": true,
+            "deviceType": "Motor",
+            "deviceClass": "motor",
+            "setting": {
+                "reversed": "true",
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1"
+            },
+            "triportSourcePort": 22
+        },
+        {
+            "port": [
+                8
+            ],
+            "name": "Rear_Claw",
+            "customName": true,
+            "deviceType": "Motor",
+            "deviceClass": "motor",
+            "setting": {
+                "reversed": "false",
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1",
+                "id": "partner"
             },
             "triportSourcePort": 22
         }
@@ -88,7 +140,9 @@
     "slot": 0,
     "platform": "V5",
     "sdkVersion": "20210708.10.00.00",
-    "appVersion": "2.0.8",
-    "fileFormat": "1.0.0",
-    "icon": ""
+    "appVersion": "2.2.0",
+    "fileFormat": "1.0.1",
+    "icon": "",
+    "targetBrainGen": "First",
+    "target": "Physical"
 }

@@ -8,6 +8,7 @@
             "name": "Controller1",
             "customName": false,
             "deviceType": "Controller",
+            "deviceClass": "controller",
             "setting": {
                 "left": "Elbow",
                 "leftDir": "false",
@@ -31,6 +32,7 @@
             "name": "Drivetrain",
             "customName": false,
             "deviceType": "Drivetrain",
+            "deviceClass": "smartdrive",
             "setting": {
                 "type": "2-motor",
                 "wheelSize": "wheel4in",
@@ -58,6 +60,7 @@
             "name": "Arm",
             "customName": true,
             "deviceType": "MotorGroup",
+            "deviceClass": "motor_group",
             "setting": {
                 "fwd": "forward",
                 "rev": "reverse",
@@ -74,6 +77,7 @@
             "name": "Elbow",
             "customName": true,
             "deviceType": "Motor",
+            "deviceClass": "motor",
             "setting": {
                 "reversed": "false",
                 "fwd": "forward",
@@ -89,6 +93,7 @@
             "name": "Hand",
             "customName": true,
             "deviceType": "Motor",
+            "deviceClass": "motor",
             "setting": {
                 "reversed": "false",
                 "fwd": "open",
@@ -101,7 +106,9 @@
     "slot": 0,
     "platform": "V5",
     "sdkVersion": "20210708.10.00.00",
-    "appVersion": "2.0.8",
-    "fileFormat": "1.0.0",
-    "icon": ""
+    "appVersion": "2.2.0",
+    "fileFormat": "1.0.1",
+    "icon": "",
+    "targetBrainGen": "First",
+    "target": "Physical"
 }
