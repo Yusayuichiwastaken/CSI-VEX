@@ -1,6 +1,6 @@
 {
     "mode": "Text",
-    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n}",
+    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Treadmill.setVelocity(60, percent);\n  Rear.setVelocity(10, percent);\n  Rear.setMaxTorque(70, percent);\n  Rear.setStopping(hold);\n\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n}",
     "textLanguage": "cpp",
     "rconfig": [
         {
@@ -18,11 +18,11 @@
                 "wheelSize": "wheel4in",
                 "gear": "ratio18_1",
                 "gearRatio": "1:1",
-                "direction": "fwd",
+                "direction": "rev",
                 "gyroType": "none",
-                "width": "14",
+                "width": "15",
                 "unit": "in",
-                "wheelbase": "0.39",
+                "wheelbase": "10",
                 "wheelbaseUnit": "in",
                 "xOffset": "0",
                 "xOffsetUnit": "mm",
@@ -41,13 +41,13 @@
             "setting": {
                 "left": "",
                 "leftDir": "false",
-                "right": "",
+                "right": "Rear",
                 "rightDir": "false",
-                "upDown": "Rear",
+                "upDown": "",
                 "upDownDir": "false",
-                "xB": "Rear",
+                "xB": "Treadmill",
                 "xBDir": "false",
-                "drive": "arcadel",
+                "drive": "tank",
                 "id": "primary"
             },
             "triportSourcePort": 22
@@ -68,6 +68,22 @@
                 "id": "partner"
             },
             "triportSourcePort": 22
+        },
+        {
+            "port": [
+                11
+            ],
+            "name": "Treadmill",
+            "customName": true,
+            "deviceType": "Motor",
+            "deviceClass": "motor",
+            "setting": {
+                "reversed": "false",
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1",
+                "id": "partner"
+            }
         }
     ],
     "slot": 0,
