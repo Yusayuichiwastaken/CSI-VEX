@@ -1,37 +1,8 @@
 {
     "mode": "Text",
-    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Treadmill.setVelocity(60, percent);\n  Rear.setVelocity(10, percent);\n  Rear.setMaxTorque(70, percent);\n  Rear.setStopping(hold);\n  Drivetrain.setDriveVelocity(0, rpm);\n  Drivetrain.setTurnVelocity(0, rpm);\n\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n}",
+    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  Treadmill.setVelocity(40, percent);\n  Rear.setVelocity(10, percent);\n  Rear.setMaxTorque(70, percent);\n  Rear.setStopping(hold);\n  Drivetrain0.setVelocity(1, percent);\n  \n  //Drivetrain.setDriveVelocity(5, percent);\n  //Drivetrain.setTurnVelocity(5, percent);\n\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n\n  //Drivetrain Movement\n  while(true){\n      Drivetrain0.spin(directionType::fwd, Controller1.Axis3.value(), velocityUnits::pct);\n\n      while(Controller1.Axis4.position()>50){\n          Drivetrain0MotorA.spin(direction::fwd, Controller1.Axis4.value(), velocityUnits::pct);\n          Drivetrain0MotorB.spin(direction::fwd, Controller1.Axis4.value(), velocityUnits::pct);\n      }\n      while(Controller1.Axis4.position()<-50){\n          Drivetrain0MotorA.spin(direction::fwd, Controller1.Axis4.value(), velocityUnits::pct);\n          Drivetrain0MotorB.spin(direction::fwd, Controller1.Axis4.value(), velocityUnits::pct);\n      }\n  }\n}",
     "textLanguage": "cpp",
     "rconfig": [
-        {
-            "port": [
-                11,
-                12,
-                0
-            ],
-            "name": "Drivetrain",
-            "customName": false,
-            "deviceType": "Drivetrain",
-            "deviceClass": "smartdrive",
-            "setting": {
-                "type": "2-motor",
-                "wheelSize": "wheel4in",
-                "gear": "ratio18_1",
-                "gearRatio": "1:1",
-                "direction": "rev",
-                "gyroType": "none",
-                "width": "15",
-                "unit": "in",
-                "wheelbase": "10",
-                "wheelbaseUnit": "in",
-                "xOffset": "0",
-                "xOffsetUnit": "mm",
-                "yOffset": "0",
-                "yOffsetUnit": "mm",
-                "thetaOffset": "180"
-            },
-            "triportSourcePort": null
-        },
         {
             "port": [],
             "name": "Controller1",
@@ -41,13 +12,13 @@
             "setting": {
                 "left": "Rear",
                 "leftDir": "false",
-                "right": "Treadmill",
+                "right": "",
                 "rightDir": "false",
                 "upDown": "",
                 "upDownDir": "false",
                 "xB": "",
                 "xBDir": "false",
-                "drive": "tank",
+                "drive": "none",
                 "id": "primary"
             },
             "triportSourcePort": 22
@@ -85,6 +56,23 @@
                 "id": "partner"
             },
             "triportSourcePort": 22
+        },
+        {
+            "port": [
+                11,
+                12
+            ],
+            "name": "Drivetrain0",
+            "customName": true,
+            "deviceType": "MotorGroup",
+            "deviceClass": "motor_group",
+            "setting": {
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1",
+                "motor_a_reversed": "false",
+                "motor_b_reversed": "true"
+            }
         }
     ],
     "slot": 0,

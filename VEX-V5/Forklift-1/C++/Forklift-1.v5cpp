@@ -1,6 +1,6 @@
 {
     "mode": "Text",
-    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  //Speeds\n  Arm.setVelocity(30, percent);\n  Elbow.setVelocity(40, percent);\n  Clip.setVelocity(50, percent);  \n  \n  //Torques\n  Arm.setMaxTorque(70, percent);\n  Elbow.setMaxTorque(65, percent);\n  Clip.setMaxTorque(85, percent);\n\n  //Holds\n  Arm.setStopping(hold);\n  Elbow.setStopping(hold);\n  Clip.setStopping(hold);\n  Drivetrain.setStopping(brake);\n\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n}",
+    "textContent": "// Include the V5 Library\n#include \"vex.h\"\n  \n// Allows for easier use of the VEX Library\nusing namespace vex;\n\nfloat myVariable;\n\n// \"when started\" hat block\nint whenStarted1() {\n  //Speeds\n  Arm.setVelocity(30, percent);\n  Elbow.setVelocity(40, percent);\n  Clip.setVelocity(50, percent);\n  Plunger.setVelocity(50, percent);  \n  \n  //Torques\n  Arm.setMaxTorque(70, percent);\n  Elbow.setMaxTorque(65, percent);\n  Clip.setMaxTorque(85, percent);\n  Plunger.setMaxTorque(50, percent);\n\n  //Holds\n  Arm.setStopping(hold);\n  Elbow.setStopping(hold);\n  Clip.setStopping(hold);\n  Plunger.setStopping(hold);\n  Drivetrain.setStopping(brake);\n\n  return 0;\n}\n\n\nint main() {\n  task rc_auto_loop_task_Controller1(rc_auto_loop_function_Controller1);\n\n  whenStarted1();\n}",
     "textLanguage": "cpp",
     "rconfig": [
         {
@@ -14,7 +14,7 @@
                 "leftDir": "false",
                 "right": "Elbow",
                 "rightDir": "false",
-                "upDown": "",
+                "upDown": "Plunger",
                 "upDownDir": "false",
                 "xB": "Clip",
                 "xBDir": "false",
@@ -22,35 +22,6 @@
                 "id": "primary"
             },
             "triportSourcePort": 22
-        },
-        {
-            "port": [
-                1,
-                2,
-                0
-            ],
-            "name": "Drivetrain",
-            "customName": false,
-            "deviceType": "Drivetrain",
-            "deviceClass": "smartdrive",
-            "setting": {
-                "type": "2-motor",
-                "wheelSize": "wheel4in",
-                "gear": "ratio18_1",
-                "gearRatio": "1:1",
-                "direction": "fwd",
-                "gyroType": "none",
-                "width": "295",
-                "unit": "mm",
-                "wheelbase": "40",
-                "wheelbaseUnit": "mm",
-                "xOffset": "0",
-                "xOffsetUnit": "mm",
-                "yOffset": "0",
-                "yOffsetUnit": "mm",
-                "thetaOffset": "180"
-            },
-            "triportSourcePort": null
         },
         {
             "port": [
@@ -82,7 +53,8 @@
                 "fwd": "forward",
                 "rev": "reverse",
                 "gear": "ratio18_1"
-            }
+            },
+            "triportSourcePort": 22
         },
         {
             "port": [
@@ -97,7 +69,54 @@
                 "fwd": "forward",
                 "rev": "reverse",
                 "gear": "ratio18_1"
-            }
+            },
+            "triportSourcePort": 22
+        },
+        {
+            "port": [
+                6
+            ],
+            "name": "Plunger",
+            "customName": true,
+            "deviceType": "Motor",
+            "deviceClass": "motor",
+            "setting": {
+                "reversed": "false",
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1",
+                "id": "partner"
+            },
+            "triportSourcePort": 22
+        },
+        {
+            "port": [
+                1,
+                2,
+                0
+            ],
+            "name": "Drivetrain",
+            "customName": false,
+            "deviceType": "Drivetrain",
+            "deviceClass": "smartdrive",
+            "setting": {
+                "type": "2-motor",
+                "wheelSize": "wheel4in",
+                "gear": "ratio18_1",
+                "gearRatio": "1:1",
+                "direction": "fwd",
+                "gyroType": "none",
+                "width": "295",
+                "unit": "mm",
+                "wheelbase": "40",
+                "wheelbaseUnit": "mm",
+                "xOffset": "0",
+                "xOffsetUnit": "mm",
+                "yOffset": "0",
+                "yOffsetUnit": "mm",
+                "thetaOffset": "180"
+            },
+            "triportSourcePort": null
         }
     ],
     "slot": 0,
