@@ -40,10 +40,13 @@ Fusion was designed with the goal of picking up and moving mobile goals as optim
 
 | Motor | Function |
 |-------|-------------|
-|  |  |
-|  |  |
-|  |  |
-|  |  |
+| 16 | Left DriveTrain 18:1 |
+| 15 | Right DriveTrain 18:1 |
+| 18 | Left Arm 18:1 |
+| 14 | Rigth Arm 18:1 |
+| 17 | Clip 18:1 |
+| 19 | Elbow 18:1 | 
+| 13 | Elbow 18:1 |
 
 <br>
 
@@ -55,9 +58,10 @@ Fusion was designed with the goal of picking up and moving mobile goals as optim
 
 | Structure | Function |
 |-------|-------------|
-|  |  |
-|  |  |
-|  |  |
-|  |  |
+| Drivetrain | Move robot |
+| Clip | Grab a mobile goal |
+| Arm | Lift mobile goal |
+| Elbow | Hold mobile goal |
+
 
 <br>
